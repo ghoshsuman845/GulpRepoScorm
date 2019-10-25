@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest identifier="Scorm wrapper1571981308593" version="1" xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3" xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3" xmlns:imsss="http://www.imsglobal.org/xsd/imsss" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>2004 3rd Edition</schemaversion>
+  </metadata>
+  <organizations default="Scorm wrapper1571981308593-org">
+    <organization identifier="Scorm wrapper1571981308593-org">
+      <title>Scorm wrapper</title>
+      <item identifier="item_1" identifierref="resource_1">
+        <title>Scorm wrapper</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="resource_1" type="webcontent" href="index.html" adlcp:scormType="sco">
+      <file href="learning-tool/color.png"/>
+      <file href="learning-tool/favicon.ico"/>
+      <file href="learning-tool/fontawesome-webfont.eot"/>
+      <file href="learning-tool/fontawesome-webfont.svg"/>
+      <file href="learning-tool/fontawesome-webfont.ttf"/>
+      <file href="learning-tool/fontawesome-webfont.woff"/>
+      <file href="learning-tool/fontawesome-webfont.woff2"/>
+      <file href="learning-tool/hue.png"/>
+      <file href="learning-tool/index.html"/>
+      <file href="learning-tool/line.gif"/>
+      <file href="learning-tool/loading.gif"/>
+      <file href="learning-tool/main-es2015.js"/>
+      <file href="learning-tool/main-es2015.js.map"/>
+      <file href="learning-tool/main-es5.js"/>
+      <file href="learning-tool/main-es5.js.map"/>
+      <file href="learning-tool/open-sans-v15-latin-300.eot"/>
+      <file href="learning-tool/open-sans-v15-latin-300.svg"/>
+      <file href="learning-tool/open-sans-v15-latin-300.ttf"/>
+      <file href="learning-tool/open-sans-v15-latin-300.woff"/>
+      <file href="learning-tool/open-sans-v15-latin-300.woff2"/>
+      <file href="learning-tool/open-sans-v15-latin-700.eot"/>
+      <file href="learning-tool/open-sans-v15-latin-700.svg"/>
+      <file href="learning-tool/open-sans-v15-latin-700.ttf"/>
+      <file href="learning-tool/open-sans-v15-latin-700.woff"/>
+      <file href="learning-tool/open-sans-v15-latin-700.woff2"/>
+      <file href="learning-tool/open-sans-v15-latin-regular.eot"/>
+      <file href="learning-tool/open-sans-v15-latin-regular.svg"/>
+      <file href="learning-tool/open-sans-v15-latin-regular.ttf"/>
+      <file href="learning-tool/open-sans-v15-latin-regular.woff"/>
+      <file href="learning-tool/open-sans-v15-latin-regular.woff2"/>
+      <file href="learning-tool/password-meter.png"/>
+      <file href="learning-tool/polyfills-es2015.js"/>
+      <file href="learning-tool/polyfills-es2015.js.map"/>
+      <file href="learning-tool/polyfills-es5.js"/>
+      <file href="learning-tool/polyfills-es5.js.map"/>
+      <file href="learning-tool/primeicons.eot"/>
+      <file href="learning-tool/primeicons.svg"/>
+      <file href="learning-tool/primeicons.ttf"/>
+      <file href="learning-tool/primeicons.woff"/>
+      <file href="learning-tool/runtime-es2015.js"/>
+      <file href="learning-tool/runtime-es2015.js.map"/>
+      <file href="learning-tool/runtime-es5.js"/>
+      <file href="learning-tool/runtime-es5.js.map"/>
+      <file href="learning-tool/scripts.js"/>
+      <file href="learning-tool/scripts.js.map"/>
+      <file href="learning-tool/styles-es2015.js"/>
+      <file href="learning-tool/styles-es2015.js.map"/>
+      <file href="learning-tool/styles-es5.js"/>
+      <file href="learning-tool/styles-es5.js.map"/>
+      <file href="learning-tool/vendor-es2015.js"/>
+      <file href="learning-tool/vendor-es2015.js.map"/>
+      <file href="learning-tool/vendor-es5.js"/>
+      <file href="learning-tool/vendor-es5.js.map"/>
+      <file href="learning-tool/assets/images/1.jpg"/>
+      <file href="learning-tool/assets/images/2.jpg"/>
+      <file href="learning-tool/assets/images/3.jpg"/>
+      <file href="learning-tool/assets/images/4.jpg"/>
+      <file href="learning-tool/assets/images/5.jpg"/>
+      <file href="learning-tool/assets/scorm-api-wrapper/src/JavaScript/SCORM_API_wrapper.js"/>
+    </resource>
+  </resources>
+</manifest>
