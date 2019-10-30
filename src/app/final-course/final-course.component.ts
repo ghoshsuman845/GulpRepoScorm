@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../services/layout.service';
-import { ScormService } from '../services/scorm.service';
 import xml2js from 'xml2js';
+import { ScormService } from 'src/app/services/scorm.service';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
-import {SCORM} from 'pipwerks-scorm-api-wrapper';
  @Component({
   selector: 'app-final-course',
   templateUrl: './final-course.component.html',
   styleUrls: ['./final-course.component.scss']
 })
 export class FinalCourseComponent implements OnInit {
-  pages:string;
- 
+
   
+  
+  pages:string;
   course: string;
   page: string;
   page1: string;
@@ -26,8 +27,12 @@ export class FinalCourseComponent implements OnInit {
   components: string;
   newCourse:{};
   scorm:string;
+   apiVersion: string;
 
-  constructor(private layoutService: LayoutService, private scormService : ScormService,private _http: HttpClient) { this.loadXML(); }
+  constructor(private scormService:ScormService, private layoutService: LayoutService,private _http: HttpClient) { }
+  
+
+ 
   
 
   ngOnInit() {
@@ -35,11 +40,6 @@ export class FinalCourseComponent implements OnInit {
    
     
 
-    // let objToBeShred = {
-    //   course: this.course,
-    //   page:this.page,
-
-    // }
     
     
     this.layoutService.PageContentAdded.subscribe((data)=>{
@@ -75,8 +75,7 @@ export class FinalCourseComponent implements OnInit {
     
         }
         console.log('Final',this.newCourse);
-        this.scormService.initCourse();
-        // console.log('scormservice',this.scormService.initCourse());
+      
         
         
 

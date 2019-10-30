@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ScormWrapperModule } from 'ngx-scorm-wrapper';
+import { ScormService } from 'src/app/services/scorm.service';
+
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -77,10 +80,13 @@ import {  HttpClientModule } from '@angular/common/http';
     BreadcrumbModule,
     CheckboxModule,
     FormsModule,
+    ScormWrapperModule,
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ScormService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

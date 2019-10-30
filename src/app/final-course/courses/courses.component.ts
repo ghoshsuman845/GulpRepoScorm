@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LayoutService } from 'src/app/services/layout.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { ScormService } from 'src/app/services/scorm.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,6 +14,9 @@ import { Router } from '@angular/router';
 export class CoursesComponent implements OnInit {
   @Input() courseContent:string[];
   @Input() pageContent:string[];
+  public score = 0;
+  public readonly maxScore = 100;
+  public readonly minScore = 0;
   pages:string;
  
   show:boolean =false;
@@ -25,10 +30,27 @@ export class CoursesComponent implements OnInit {
   component: string;
   components: string;
   courseObject: string;
+  apiVersion: string;
   //newCourse: { _course: string; _page: string; _article: string; _block: string; _component: string; };
 
-  constructor(private layoutService: LayoutService , private router: Router) { }
+  constructor(private scormService:ScormService, private layoutService: LayoutService,private _http: HttpClient) { 
+    this.apiVersion = scormService.apiVersion;
+    this.score = scormService.score;
+   }
+   public   goToPage(score: number) {
+    if (score >= this.minScore && score <= this.maxScore) {
+      this.score = score;
+      this.scormService.score = this.score;
+    } else {
+      this.score = score < this.minScore ? this.minScore : this.maxScore;
+    }
+  }
 
+  public submitScore() {
+    this.scormService.commit(); // Finally saves data to LMS
+    this.scormService.terminate();
+    window.close();
+  }
   ngOnInit() {
     console.log('courses');
     
@@ -65,18 +87,18 @@ export class CoursesComponent implements OnInit {
   });
   }
 
-  goToPage(){
+
 
     
-    console.log('click view button');
-    this.show = !this.show;
-    this.courseObject = localStorage.getItem('PageItem');
+    // console.log('click view button');
+    // this.show = !this.show;
+    // this.courseObject = localStorage.getItem('PageItem');
 
-    console.log('this.courseObject',this.courseObject);
+    // console.log('this.courseObject',this.courseObject);
     
-    this.layoutService.PageAdded.next(this.courseObject);
+    // this.layoutService.PageAdded.next(this.courseObject);
     
-      this.router.navigate(['/final-course/course-object']);
+    //   this.router.navigate(['/final-course/course-object']);
    
-  }
+  
 }

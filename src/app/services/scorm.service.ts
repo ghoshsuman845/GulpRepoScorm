@@ -6,6 +6,8 @@ import convertTotalSeconds from 'src/app/timeConverter';
 export interface ILMSData {
   score: number;
   location: string;
+  learnername:string;
+  studentID: string;
   completionStatus: 'complete' | 'incomplete';
   suspendData: object;
 }
@@ -25,20 +27,28 @@ export class ScormService {
       console.log('Cannot find LMS API');
     }
 
-    if (!scormWrapper.LMSIsInitialized) {
+    if (scormWrapper.LMSIsInitialized) {
       console.warn('LMS is not connected');
       return;
     } else {
       console.warn('LMS is connected');
       this.startTime = new Date().getTime();
 
-      this.scormWrapper.doLMSSetValue('cmi.score.max', '100');
-      this.scormWrapper.doLMSSetValue('cmi.location', '0:0'); // assume that the format is <chapter>:<page>
-      this.scormWrapper.doLMSSetValue('cmi.session_time', this.sessionTime);
-      this.scormWrapper.doLMSSetValue('cmi.completion_status', 'incomplete');
+      this.scormWrapper.doLMSSetValue('cmi.core.score.max', '100');
+      this.scormWrapper.doLMSSetValue('cmi.core.lesson_location', '0:0'); // assume that the format is <chapter>:<page>
+      this.scormWrapper.doLMSSetValue('cmi.core.session_time ', this.sessionTime);
+      this.scormWrapper.doLMSSetValue('cmi.core.lesson_status', 'incomplete');
+      this.scormWrapper.doLMSGetValue('cmi.core.student_name');
+      this.scormWrapper.doLMSGetValue('cmi.core.student_id');
+
+
       this.commit();
     }
   }
+   get Username(){
+     const learnername = this.scormWrapper.doLMSGetValue('cmi.core.student_name');
+     return learnername;
+   }
 
   get apiVersion(): string {
     return this.scormWrapper.APIVersion;
@@ -53,9 +63,9 @@ export class ScormService {
   }
 
   get score(): number {
-    if (this.scormWrapper.LMSIsInitialized) {
+    if (!this.scormWrapper.LMSIsInitialized) {
       const scaledScore = +(this.scormWrapper.doLMSGetValue('cmi.score.scaled') || 0);
-      const rawScore = +(this.scormWrapper.doLMSGetValue('cmi.score.raw') || 0);
+      const rawScore = +(this.scormWrapper.doLMSGetValue('cmi.core.score.raw') || 0);
 
       return scaledScore * 100 || rawScore;
     }
@@ -65,13 +75,13 @@ export class ScormService {
   }
 
   set score(score: number) {
-    if (this.scormWrapper.LMSIsInitialized) {
+    if (!this.scormWrapper.LMSIsInitialized) {
       this.scormWrapper.doLMSSetValue('cmi.score.scaled', '' + score / 100);
       return;
     }
     console.warn('LMS is not connected');
   }
-
+  
   public commit() {
     this.scormWrapper.doLMSCommit();
   }
@@ -103,10 +113,10 @@ export class ScormService {
 
     const { score, location, completionStatus, suspendData } = data;
 
-    this.scormWrapper.doLMSSetValue('cmi.score.max', '100');
-    this.scormWrapper.doLMSSetValue('cmi.location', location); // assume that the format is <chapter>:<page>
-    this.scormWrapper.doLMSSetValue('cmi.session_time', this.sessionTime);
-    this.scormWrapper.doLMSSetValue('cmi.completion_status', completionStatus);
+    this.scormWrapper.doLMSSetValue('cmi.core.score.max', '100');
+    this.scormWrapper.doLMSSetValue('cmi.core.lesson_location', location); // assume that the format is <chapter>:<page>
+    this.scormWrapper.doLMSSetValue('cmi.core.session_time', this.sessionTime);
+    this.scormWrapper.doLMSSetValue('cmi.core.lesson_status', completionStatus);
     this.scormWrapper.doLMSSetValue('cmi.score.scaled', score / 100 + '');
     this.scormWrapper.doLMSSetValue('cmi.core.lesson_location', location);
     this.scormWrapper.doLMSSetValue('cmi.suspend_data', JSON.stringify(suspendData));
