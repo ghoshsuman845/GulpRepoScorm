@@ -35,7 +35,7 @@
     "gulp-strip-debug": "^3.0.0",
     "gulp-util": "^3.0.8",
     "gulp-zip": "^4.2.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-scorm-wrapper": "0.0.8",
     "pipwerks-scorm-api-wrapper": "^0.1.2",
     "popper.js": "^1.15.0",
